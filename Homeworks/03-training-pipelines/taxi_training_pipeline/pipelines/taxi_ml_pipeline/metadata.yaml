@@ -1,0 +1,66 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - prepare_data
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_taxi_data
+  retry_config: null
+  status: executed
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_taxi_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - train_model
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: prepare_data
+  retry_config: null
+  status: executed
+  type: transformer
+  upstream_blocks:
+  - load_taxi_data
+  uuid: prepare_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - register_model
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: train_model
+  retry_config: null
+  status: executed
+  type: transformer
+  upstream_blocks:
+  - prepare_data
+  uuid: train_model
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: register_model
+  retry_config: null
+  status: executed
+  type: data_exporter
+  upstream_blocks:
+  - train_model
+  uuid: register_model
+name: taxi_ml_pipeline
+type: python
+uuid: taxi_ml_pipeline 
